@@ -1,8 +1,0 @@
-[tool.flake8]
-extend-exclude = [
-    "migrations",
-    "__pycache__",
-    "tests",
-    "settings.py",
-    "manage.py",
-]
