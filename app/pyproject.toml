@@ -1,4 +1,4 @@
-[tool.ruff]
+[tool.flake8]
 extend-exclude = [
     "migrations",
     "__pycache__",
