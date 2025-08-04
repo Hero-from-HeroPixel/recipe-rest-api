@@ -1,8 +1,11 @@
-FROM python:3.13-alpine
+FROM python:3.13-slim
 LABEL maintainer='heropixel.co.za'
 
 #Env values
 ENV PYTHONUNBUFFERED=1
+
+#Setup environment
+RUN apt update && apt install git -y
 
 #Setup workspace
 COPY ./requirements.txt /tmp/requirements.txt
@@ -20,12 +23,14 @@ RUN python -m venv /py && \
     if [ "$DEV" = "true" ]; \
     then /py/bin/pip install -r /tmp/requirements.dev.txt;  \
     fi && \
-    rm -rf /tmp && \
-    adduser \
+    rm -rf /tmp
+
+ARG USERNAME=django-app
+RUN adduser \
     --disabled-password \
-    --no-create-home \
-    django-user
+    --gecos "" \
+    --shell "/sbin/nologin" \
+    $USERNAME
+USER $USERNAME
 
 ENV PATH="/py/bin:$PATH"
-
-USER django-user
