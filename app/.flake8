@@ -5,3 +5,4 @@ exclude =
     tests,
     settings.py,
     manage.py
+max-line-length = 100
