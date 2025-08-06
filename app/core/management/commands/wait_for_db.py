@@ -14,7 +14,7 @@ class Command(BaseCommand):
         self.stdout.write("Waiting for db...")
         db_up = False
         retries = 0
-        while retries < 3 and db_up is False:
+        while retries < 6 and db_up is False:
             try:
                 self.check(databases=["default"])  # pyright: ignore[reportCallIssue]
                 db_up = True
