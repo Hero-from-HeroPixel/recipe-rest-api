@@ -6,6 +6,7 @@ services:
                 - DEV=true
         ports:
             - 8000:8000
+        restart: unless-stopped
         volumes:
             - ./app:/app
         command: |
@@ -18,13 +19,15 @@ services:
         depends_on:
             - db
     db:
-        image: postgres:13-alpine
+        image: postgres:17-alpine
+        restart: always
+        shm_size: 512mb
         volumes:
-            - dev-db-data:var/lib/postgresql/data
+            - dev-db-data:/var/lib/postgresql/data
         environment:
             - POSTGRES_DB=devdb
             - POSTGRES_USER=devuser
-            - POSTGRESS_PASSWORD=securepw
+            - POSTGRES_PASSWORD=securepw
 
 volumes:
-    dev-vb-data:
+    dev-db-data:
