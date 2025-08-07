@@ -1,8 +1,8 @@
 import time
 
-from psycopg import OperationalError as PsycopgError
-from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
+from django.db.utils import OperationalError
+from psycopg import OperationalError as PsycopgError
 
 
 class Command(BaseCommand):

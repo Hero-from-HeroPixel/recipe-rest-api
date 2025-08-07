@@ -11,3 +11,7 @@ app/**/__pycache__/
 .env/
 .venv/
 venv/
+
+#Linting
+.ruff_cache
+app/.ruff_cache
