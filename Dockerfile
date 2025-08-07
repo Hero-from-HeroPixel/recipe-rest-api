@@ -32,9 +32,13 @@ RUN python -m venv /py && \
 ARG USERNAME=django-app
 RUN adduser \
     --disabled-password \
-    --gecos "" \
     --shell "/sbin/nologin" \
-    $USERNAME
+    $USERNAME && \
+    if [ "$DEV" = "true" ]; \
+    then chown -R $USERNAME:$USERNAME /app && chmod -R u+w /app ;  \
+    fi 
+
+
 USER $USERNAME
 
 ENV PATH="/py/bin:$PATH"
