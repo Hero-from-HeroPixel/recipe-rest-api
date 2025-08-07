@@ -33,11 +33,7 @@ ARG USERNAME=django-app
 RUN adduser \
     --disabled-password \
     --shell "/sbin/nologin" \
-    $USERNAME && \
-    if [ "$DEV" = "true" ]; \
-    then chown -R $USERNAME:$USERNAME /app && chmod -R u+w /app ;  \
-    fi 
-
+    $USERNAME 
 
 USER $USERNAME
 
